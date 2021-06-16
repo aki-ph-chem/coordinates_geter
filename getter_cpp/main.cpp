@@ -28,6 +28,7 @@ std::vector<double> split(std::string str){
 
 int main(){
 
+// input the name of input file, ouput file, number of atoms
     std::string name_of_input_file;
     std::string name_of_output_file;
     int num_of_atoms;
@@ -50,8 +51,8 @@ int main(){
     while(getline(ifs,line)){
 
     buff.push_back(line);
-    
     num_of_loop++;
+
     }
 
     bool loop_flag = true;
@@ -63,15 +64,15 @@ int main(){
         flag = (int)buff[num_of_loop].find("Standard orientation:");
 
         loop_flag = flag <= 0;
-
         num_of_loop--;
+
     }
 
       num_of_loop++;
       num_of_loop += 5;
 
     //num_of_atoms = 21;
-    std::vector<std::vector<double>> result;
+    //std::vector<std::vector<double>> result;
     ;std::ofstream ofs(name_of_output_file);
 
     for(int i=0;i<num_of_atoms;i++){
@@ -79,17 +80,13 @@ int main(){
         std::vector<double> output;
 
         output = split(buff[num_of_loop]);
-        ofs<<output[0]<<" "<<output[1]<<" "<<output[2]<<" "<<output[3]<<" "<<output[4]<<" "<<output[5]<<std::endl;
+        ofs<<output[0]<<","<<output[1]<<","<<output[2]<<","<<output[3]<<","<<output[4]<<","<<output[5]<<std::endl;
         
-        result.push_back(split(buff[num_of_loop]));
+       // result.push_back(split(buff[num_of_loop]));
 
         num_of_loop++;
     }
 
-    for(int i=0;i<num_of_atoms;i++){
-
-        std::cout<<result[i][0]<<","<<result[i][1]<<","<<result[i][2]<<","<<result[i][3]<<","<<result[i][4]<<","<<result[i][5]<<std::endl;
-    }
 
     return 0;
 }
